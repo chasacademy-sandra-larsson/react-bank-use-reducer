@@ -1,21 +1,20 @@
 import { useReducer } from 'react';
 import './App.css';
 /*
-Instruktioner 
 
-1. Exempel med useReducer och ett enkelt bankkonto! Det är förenklat och vi använder inga kontonummer :-)
+ Exempel med useReducer och ett enkelt bankkonto!
 
-2. Använd en reducerfunktion för att modellera följande tillståndsövergångar: öppna konto, sätta in, ta ut, begära lån, betala lån, stäng konto. Använd initialState nedan för att komma igång.
+Använder en reducerfunktion för att modellera följande states: öppna konto, sätta in, ta ut, begära lån, betala lån, stänga konto. 
 
-3. Alla operationer (förutom att öppna konto) kan endast utföras om isActive är sant. Om inte, returnera bara det ursprungliga state-objektet. Du kan kontrollera detta direkt i början av reducer.
+Alla operationer (förutom att öppna konto) kan endast utföras om isActive är sant. Om inte, returnera bara det ursprungliga state-objektet. Detta kontrolleras direkt i början av reducern.
 
-4. När kontot öppnas sätts isActive till sant. Det finns också ett minsta insättningsbelopp på 500 för att öppna ett konto (vilket betyder att saldot kommer att börja på 500).
+När kontot öppnas sätts isActive till sant. Det finns också ett minsta insättningsbelopp på 500 för att öppna ett konto (vilket betyder att saldot kommer att börja på 500).
 
-5. Kunden kan endast begära ett lån om det inte finns något lån ännu. Om det villkoret är uppfyllt registreras det begärda beloppet i loan-staten, och det läggs till saldot. Om villkoret inte är uppfyllt, returnera bara det aktuella state.
+Kunden kan endast begära ett lån om det inte finns något lån ännu. Om det villkoret är uppfyllt registreras det begärda beloppet i loan-staten, och det läggs till saldot. Om villkoret inte är uppfyllt, returnera bara det aktuella state.
 
-6. När kunden betalar lånet händer motsatsen: pengarna tas från saldot och loan kommer tillbaka till 0. Detta kan leda till negativa saldon, men det är inget problem eftersom kunden inte kan stänga sitt konto nu (se nästa punkt).
+När kunden betalar lånet händer motsatsen: pengarna tas från saldot och loan kommer tillbaka till 0. Detta kan leda till negativa saldon, men det är inget problem eftersom kunden inte kan stänga sitt konto nu (se nästa punkt).
 
-7. Kunden kan bara stänga ett konto om det inte finns något lån OCH om saldot är noll. Om detta villkor inte är uppfyllt, returnera bara state. Om villkoret är uppfyllt avaktiveras kontot och alla pengar tas ut. Kontot går tillbaka till sitt initiala tillstånd.
+Kunden kan bara stänga ett konto om det inte finns något lån OCH om saldot är noll. Om detta villkor inte är uppfyllt, returnera bara state. Om villkoret är uppfyllt avaktiveras kontot och alla pengar tas ut. Kontot går tillbaka till sitt initiala tillstånd.
 */
 
 interface inititalBankState {
